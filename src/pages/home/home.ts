@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
-
 import { SMS } from 'ionic-native';
+import { SettingsPage } from '../settings/settings';
 
 declare var google;
 
@@ -15,9 +15,7 @@ export class HomePage {
   map: any;
   number = '0034610347748';
 
-  constructor(public navCtrl: NavController) {
-
-  }
+  constructor(public navCtrl: NavController) { }
 
   ionViewDidLoad(){
     this.loadMap();
@@ -26,9 +24,7 @@ export class HomePage {
   loadMap(){
 
     Geolocation.getCurrentPosition().then((position) => {
-
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
       let mapOptions = {
         center: latLng,
         zoom: 16,
@@ -43,7 +39,6 @@ export class HomePage {
   }
 
   addMarker(){
-
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
@@ -56,7 +51,6 @@ export class HomePage {
   }
 
   addInfoWindow(marker, content){
-
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
@@ -71,11 +65,15 @@ export class HomePage {
       replaceLineBreaks: false,
       android: { intent: 'INTENT' }
     }
-    SMS.send(this.number, 'Hello world!',options)
-      .then(()=>{
-        alert("success");
-      },()=>{
-        alert("failed");
-      });
+    SMS.send(this.number, 'Hello world!',options).then(()=>{
+      alert("success");
+    },()=>{
+      alert("failed");
+    });
+  }
+
+  goToSettings() {
+    console.log("vaya pufo");
+    this.navCtrl.push(SettingsPage);
   }
 }
