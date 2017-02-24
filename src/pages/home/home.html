@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="corporate">
+    <ion-title>PrevenPro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+  <div #my_gmap id="map"></div>
+
+  <ion-card>
+    <ion-fab right top (click)="addMarker()">
+      <button ion-fab color="corporate">
+        <ion-icon name="pin"></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-item>
+      <a ion-button icon-left full large href="tel:{{number}}" color="danger">
+        <ion-icon left name="call"></ion-icon>
+        PEDIR AYUDA {{algolo}}
+      </a>
+    </ion-item>
+  </ion-card>
+</ion-content>
