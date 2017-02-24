@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 
+import { SMS } from 'ionic-native';
+
 declare var google;
 
 @Component({
@@ -62,5 +64,18 @@ export class HomePage {
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
+  }
+
+  sendSMS(){
+    var options={
+      replaceLineBreaks: false,
+      android: { intent: 'INTENT' }
+    }
+    SMS.send(this.number, 'Hello world!',options)
+      .then(()=>{
+        alert("success");
+      },()=>{
+        alert("failed");
+      });
   }
 }
