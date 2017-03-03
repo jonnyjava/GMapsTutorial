@@ -22,15 +22,13 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
+        <ion-col width-50 *ngIf="allow_calls">
           <a ion-button icon-left full small href="tel:{{number}}" color="danger">
             <ion-icon left name="call"></ion-icon>
             PEDIR AYUDA
           </a>
         </ion-col>
-        <ion-col width-50>
+        <ion-col width-50 *ngIf="allow_sms">
           <a ion-button right icon-left full small color="danger" (click)="sendSMS()">
             <ion-icon left name="mail"></ion-icon>
             ENVIAR SMS

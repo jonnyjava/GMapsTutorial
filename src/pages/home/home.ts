@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import { SMS } from 'ionic-native';
 import { SettingsPage } from '../settings/settings';
+import { Storage } from '@ionic/storage'
 
 declare var google;
 
@@ -14,8 +15,14 @@ export class HomePage {
   @ViewChild('my_gmap') mapElement: ElementRef;
   map: any;
   number = '0034610347748';
+  allow_calls: any;
+  allow_sms: any;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public storage: Storage) {
+    this.storage.ready().then(() => {
+      this.getSettings();
+    });
+  }
 
   ionViewDidLoad(){
     this.loadMap();
@@ -74,5 +81,14 @@ export class HomePage {
 
   goToSettings() {
     this.navCtrl.push(SettingsPage);
+  }
+
+  getSettings(){
+    this.storage.get('allow_calls').then((val) => {
+      this.allow_calls = val;
+   });
+   this.storage.get('allow_sms').then((val) => {
+      this.allow_sms = val;
+   });
   }
 }

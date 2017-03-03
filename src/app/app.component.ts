@@ -9,7 +9,7 @@ import { SettingsPage } from '../pages/settings/settings';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = SettingsPage;
+  rootPage = HomePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
