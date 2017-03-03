@@ -1,44 +1,40 @@
 <ion-header>
   <ion-toolbar color="corporate">
-    <ion-title>PrevenPro</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="goToHome()">
-        <ion-icon right name="arrow-left"></ion-icon>
+        <ion-icon left name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-title>PrevenPro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
   <ion-list>
-
     <ion-item>
       <ion-label floating>Nombre</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" (blur)="saveSettings()" [value]="name" [(ngModel)]="name"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label floating>Apellidos</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" (blur)="saveSettings()" [value]="surname" [(ngModel)]="surname"></ion-input>
     </ion-item>
-
-
     <ion-item>
       <ion-label floating>Numero de emergencia</ion-label>
-      <ion-input type="tel"></ion-input>
+      <ion-input type="tel" (blur)="saveSettings()" [value]="phone" [(ngModel)]="phone"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label>Permitir llamada</ion-label>
-      <ion-toggle color="corporate" checked="false"></ion-toggle>
+      <ion-toggle color="corporate" (click)="saveSettings()" [(ngModel)]="allow_calls"></ion-toggle>
     </ion-item>
-
     <ion-item>
       <ion-label>Permitir envio de SMS</ion-label>
-      <ion-toggle color="corporate" checked="false"></ion-toggle>
+      <ion-toggle color="corporate" (click)="saveSettings()" [(ngModel)]="allow_sms"></ion-toggle>
     </ion-item>
-
+    <ion-item>
+      <button ion-button icon-only (click)="cleanAll()">
+        CLEAR ALL
+      </button>
+    </ion-item>
   </ion-list>
-
 </ion-content>

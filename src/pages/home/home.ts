@@ -73,7 +73,6 @@ export class HomePage {
   }
 
   goToSettings() {
-    console.log("vaya pufo");
     this.navCtrl.push(SettingsPage);
   }
 }
